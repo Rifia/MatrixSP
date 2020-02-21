@@ -9,96 +9,124 @@
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="340dp"
-        android:layout_height="340dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:columnWidth="100dp"
-        android:gravity="center"
-        android:horizontalSpacing="5dp"
-        android:numColumns="3"
-        android:stretchMode="columnWidth"
+        app:columnCount="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/one"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/two"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/three"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/four"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/five"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/six"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/seven"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/eight"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/nine"
+            android:text="9" />
+
     </androidx.gridlayout.widget.GridLayout>
 
-    <Button
-        android:id="@+id/max"
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="39dp"
-        android:text="max"
-        app:layout_constraintEnd_toStartOf="@+id/min"
-        app:layout_constraintHorizontal_bias="0.833"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
-    <Button
-        android:id="@+id/min"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="39dp"
-        android:text="min"
-        app:layout_constraintEnd_toStartOf="@+id/multipl"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
-    <Button
-        android:id="@+id/multipl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="32dp"
-        android:text="multipl"
+        android:layout_gravity="center"
+        app:columnCount="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
-    <Button
-        android:id="@+id/restart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
-        android:text="restart"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/max" />
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        android:layout_marginTop="20dp"
+        >
 
-    <Button
-        android:id="@+id/change_to_null"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="89dp"
-        android:layout_marginTop="100dp"
-        android:text="null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.692"
-        app:layout_constraintStart_toEndOf="@+id/restart"
-        app:layout_constraintTop_toBottomOf="@+id/multipl" />
+        <Button
+            android:id="@+id/max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="max" />
 
-    <TextView
-        android:id="@+id/min_view"
+        <Button
+            android:id="@+id/min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min" />
+        <Button
+            android:id="@+id/sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sum" />
+
+        <TextView
+            android:id="@+id/max_view"
+            android:layout_width="88dp"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/min_view"
+            android:layout_width="88dp"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+        android:id="@+id/sum_view"
         android:layout_width="88dp"
         android:layout_height="42dp"
         android:gravity="center"
-        android:text="0"
-        app:layout_constraintEnd_toEndOf="@+id/min"
-        app:layout_constraintStart_toStartOf="@+id/min"
-        app:layout_constraintTop_toBottomOf="@+id/min" />
+        android:text="0" />
 
-    <TextView
-        android:id="@+id/max_view"
-        android:layout_width="88dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="40dp"
-        android:gravity="center"
-        android:text="0"
-        app:layout_constraintEnd_toStartOf="@+id/min_view"
-        app:layout_constraintTop_toBottomOf="@+id/max" />
+        <Button
+            android:id="@+id/restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="restart" />
+
+        <Button
+            android:id="@+id/allmult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="X10" />
+
+        <Button
+            android:id="@+id/change_to_null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="null" />
+
+    </androidx.gridlayout.widget.GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

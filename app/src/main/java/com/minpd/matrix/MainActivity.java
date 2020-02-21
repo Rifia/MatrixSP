@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public final int edge = 101;
     public final int mnozhitel = 10;
 
-    public int dimension = 4;
+    public int dimension = 3;
     public int dimensionQ = dimension*dimension;
     public int[] numbers = new int[dimensionQ];
 
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     int minValue(int[] numbers){
         int min = numbers[0];
-        for (int i = 0; i < dimensionQ; i++) if (numbers[i] > min) min = numbers[i];
+        for (int i = 0; i < dimensionQ; i++) if (numbers[i] < min) min = numbers[i];
         return min;
     }
 
@@ -40,54 +42,61 @@ public class MainActivity extends AppCompatActivity {
             numbers[i] *= mnozhitel;
     }
 
+    int sum (int[] numbers) {
+        int k = 0;
+        for (int i = 0; i < dimensionQ; i++) k += numbers[i];
+        return k;
+    }
+
     void changeToNull(int[] numbers){ for (int i = 0; i < dimensionQ; i++) numbers[i] = 0;}
 
     void reset(int[] numbers){ for (int i = 0; i < dimensionQ; i++) numbers[i] = (int)(Math.random()*edge);}
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //инициализация всех элементов
+        final androidx.gridlayout.widget.GridLayout myGridLayout = findViewById(R.id.gridLayout);
 
-        GridLayout gridLayout = findViewById(R.id.gridLayout);
-
-        Button max = (Button)findViewById(R.id.max);
-        Button min = (Button)findViewById(R.id.min);
-        Button multipl = (Button)findViewById(R.id.multipl);
-        Button toNull = (Button)findViewById(R.id.change_to_null);
-        Button restart = (Button)findViewById(R.id.restart);
-
-        TextView maxResult = (TextView)findViewById(R.id.max_view);
-        TextView minResult = (TextView)findViewById(R.id.min_view);
+        Button max = findViewById(R.id.max);
+        Button min = findViewById(R.id.min);
+        Button sum = findViewById(R.id.sum);
+        Button toNull = findViewById(R.id.change_to_null);
+        Button restart =findViewById(R.id.restart);
+        Button allmult = findViewById(R.id.allmult);
 
 
-        //как правильно снова отрисовать gridView
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 reset(numbers);
-
+                for(int i=0; i<myGridLayout.getChildCount(); i++)
+                {
+                    ((TextView) myGridLayout.getChildAt(i)).setText(Integer.toString(numbers[i]));
+                }
             }
         });
 
-        //как правильно снова отрисовать gridView
         toNull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeToNull(numbers);
-
+                for(int i=0; i<myGridLayout.getChildCount(); i++)
+                {
+                    ((TextView) myGridLayout.getChildAt(i)).setText(Integer.toString(numbers[i]));
+                }
             }
         });
 
-        //как правильно снова отрисовать gridView
-        multipl.setOnClickListener(new View.OnClickListener() {
+        allmult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 multiplication(numbers);
+                for(int i=0; i<myGridLayout.getChildCount(); i++)
+                {
+                    ((TextView) myGridLayout.getChildAt(i)).setText(Integer.toString(numbers[i]));
+                }
             }
         });
 
@@ -95,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int maxV = maxValue(numbers);
-                //как-то передать это значение во вьюху
+                TextView maxResult = findViewById(R.id.max_view);
+                maxResult.setText(Integer.toString(maxV));
             }
         });
 
@@ -103,7 +113,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int minV = minValue(numbers);
-                //как-то передать это значение во вьюху
+                TextView minResult = findViewById(R.id.min_view);
+                minResult.setText(Integer.toString(minV));
+            }
+        });
+
+        sum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int m = sum(numbers);
+                TextView summa = findViewById(R.id.sum_view);
+                summa.setText(Integer.toString(m));
             }
         });
 
